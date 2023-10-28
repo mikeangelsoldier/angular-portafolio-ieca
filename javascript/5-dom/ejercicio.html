@@ -11,7 +11,7 @@
     </div>
     <div style="display: flex">
         <button id="btnActualizacion" onClick="modificarEncabezado()" style="margin-right: 10px">Establecer Encabezado</button>
-        <button id="btnUndo" disabled>Encabezado Anterior</button>
+        <button id="btnUndo" onClick="undoEncabezado()" disabled>Encabezado Anterior</button>
     </div>
     <h1 id="encabezado">...</h1>
 
@@ -38,9 +38,44 @@
         const tituloEncabezado = document.getElementById('encabezado')
         const inputEncabezado = document.getElementById('inputEncabezado')
 
+        var arrayTitulos = [];
+
         function modificarEncabezado() {
             /* Tu código aquí */
+
+            if(inputEncabezado.value && inputEncabezado.value != '') {
+                tituloEncabezado.innerHTML = inputEncabezado.value;
+                arrayTitulos.push(inputEncabezado.value);
+
+                if(arrayTitulos.length >= 2) {
+                    btnUndo.disabled = false;
+                } else {
+                    btnUndo.disabled = true;
+                }
+            } else {
+                alert(`El campo input no puede ser vacío`);
+            }
+            
         }
+
+
+        function undoEncabezado() {
+
+            var ultimoEncabezado = arrayTitulos.pop();
+
+            tituloEncabezado.innerHTML = ultimoEncabezado;
+
+            if(arrayTitulos.length >= 1) {
+                btnUndo.disabled = false;
+            } else {
+                btnUndo.disabled = true;
+            }
+        }
+
+
+
+
+
     </script>
 </body>
 
