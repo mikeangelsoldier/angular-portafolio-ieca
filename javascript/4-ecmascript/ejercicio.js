@@ -30,6 +30,10 @@ class ListaNumeros {
         const media = this.numeros.reduce((a, b) => a + b, 0) / this.numeros.length
 
         // COMPLETA AQUÍ CÓDIGO CON MÉTODO .filter
+        // console.log(media);
+
+        let numerosMayoresALaMedia = this.numeros.filter((numero) => { return numero > media});
+        console.log(numerosMayoresALaMedia);
     }
 
     ordenamientoMayorAMenor() {
@@ -42,6 +46,8 @@ class ListaNumeros {
         */
 
         // COMPLETA AQUÍ CÓDIGO CON MÉTODO .sort
+
+        this.numeros.sort((a, b)=> {return b-a});
 
         console.log(this.numeros)
     }
