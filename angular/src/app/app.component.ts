@@ -15,6 +15,9 @@ export class AppComponent implements OnInit {
   btnDisabled:boolean = true
   email:string = "edu@eml.run"
 
+
+  currentImgPokemon : (string | null) = null;
+
   mostrarAlerta() {
     alert("Alerta ⚠️")
   }
@@ -72,5 +75,18 @@ export class AppComponent implements OnInit {
 
   nuevoPokemon: string = "";
 
+
+  goToImgPokemon(urlPokemon: string) {
+
+    fetch(urlPokemon)
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.sprites.front_default) {
+          this.currentImgPokemon = data.sprites.front_default;
+        } else {
+          this.currentImgPokemon = null;
+        }
+      })
+  }
 
 }

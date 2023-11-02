@@ -93,9 +93,15 @@
     <h4>Mi Pokedex</h4>
     <div class="pokemons">
       <div *ngFor="let miPokemon of miPokedex">
+        <!--
         <a href={{miPokemon.url}} target="_blank">
           <span>{{ miPokemon.name }}</span>
         </a>
+        -->
+
+        <button (click)="goToImgPokemon(miPokemon.url)" target="_blank">
+          <span>{{ miPokemon.name }}</span>
+        </button>
       </div>
 
       <!--
@@ -103,6 +109,14 @@
        -->
 
     </div>
+
+    <div class="">
+      <div *ngIf="currentImgPokemon">
+        <h4>Esta es la imagen del pokemon que elegiste</h4>
+        <img width="300px" height="" [src]="currentImgPokemon" alt="Imagen del pokemon">
+       </div>
+    </div>
+
     <!-- #endregion -->
 
     <h3>[ngSwitch]</h3>
